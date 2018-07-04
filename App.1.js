@@ -7,7 +7,8 @@
 import React, { Component } from 'react';
 import { Alert, StyleSheet, TextInput, View, Button } from 'react-native';
 
-export default class App extends Component {
+type Props = {};
+export default class App extends Component<Props> {
 
   constructor(props) {
     super(props);
@@ -20,7 +21,7 @@ export default class App extends Component {
 
   onLogin() {
     const { username, password } = this.state;
-
+    
     Alert.alert('Credentials', `${username} + ${password}`);
   }
 
@@ -42,7 +43,7 @@ export default class App extends Component {
         />
         
         <Button
-          title={'Entrar'}
+          title={'Login'}
           style={styles.input}
           onPress={this.onLogin.bind(this)}
         />
