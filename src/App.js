@@ -30,19 +30,19 @@ export default class App extends Component {
         <TextInput
           value={this.state.username}
           onChangeText={(username) => this.setState({ username })}
-          placeholder={'Username'}
+          placeholder={'Usuário'}
           style={styles.input}
         />
         <TextInput
           value={this.state.password}
           onChangeText={(password) => this.setState({ password })}
-          placeholder={'Password'}
+          placeholder={'Senha'}
           secureTextEntry
           style={styles.input}
         />
         
         <Button
-          title={'Entrar'}
+          title={'  Entrar  '}
           style={styles.input}
           onPress={this.onLogin.bind(this)}
         />

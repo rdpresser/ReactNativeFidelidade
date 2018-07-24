@@ -4,6 +4,7 @@
  * @flow
  */
 
+ /*
 import React, { Component } from 'react';
 import { Alert, StyleSheet, TextInput, View, Button } from 'react-native';
 
@@ -68,3 +69,4 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
 });
+*/
