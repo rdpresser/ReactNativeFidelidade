@@ -2,18 +2,17 @@ import React from 'react';
 import { ScrollView, Text, Linking, View } from 'react-native';
 import { Card, Button } from 'react-native-elements';
 import Config from 'react-native-config';
-import API from '../api';
 
 const images = [
   {
     key: 1,
-    name: Config.API_BASE_URL,
+    name: Config.API_BASE_URL_TEST,
     image: require('../images/1.jpg'),
     url: 'https://unsplash.com/photos/C9t94JC4_L8'
   },
   {
     key: 2,
-    name: 'Rodrigo Presser',
+    name: 'Rodrigo Presser 2ss88',
     image: require('../images/2.jpg'),
     url: 'https://unsplash.com/photos/waZEHLRP98s'
   },

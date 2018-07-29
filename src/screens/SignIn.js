@@ -2,6 +2,14 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Card, Button, FormLabel, FormInput } from 'react-native-elements';
 import { onSignIn } from '../auth';
+import toast from '../utils/toast';
+import API from '../api';
+
+const result = async () => {
+  const response = await API.get();
+  alert(response);
+  alert(response.data);
+};
 
 export default ({ navigation }) => (
   <View style={styles.container}>
@@ -16,6 +24,10 @@ export default ({ navigation }) => (
         backgroundColor='#03A9F4'
         title='Login'
         onPress={async () => {
+          //console.log(result.data);
+          alert(result.data);
+          //alert(toast);
+          //toast.show('Rodrigo', { position: 'center' });
           await onSignIn();
           navigation.navigate('SignedIn');
         }}
