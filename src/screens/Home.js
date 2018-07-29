@@ -2,6 +2,7 @@ import React from 'react';
 import { ScrollView, Text, Linking, View } from 'react-native';
 import { Card, Button } from 'react-native-elements';
 import Config from 'react-native-config';
+import API from '../api';
 
 const images = [
   {
@@ -12,7 +13,7 @@ const images = [
   },
   {
     key: 2,
-    name: 'Jamison McAndie',
+    name: 'Rodrigo Presser',
     image: require('../images/2.jpg'),
     url: 'https://unsplash.com/photos/waZEHLRP98s'
   },
@@ -30,21 +31,28 @@ const images = [
   }
 ];
 
-export default () => (
-  <View style={{ flex: 1 }}>
-    <ScrollView contentContainerStyle={{ paddingVertical: 20 }}>
-      {images.map(({ name, image, url, key }) => (
-        <Card title={`CARD ${key}`} image={image} key={key}>
-          <Text style={{ marginBottom: 10 }}>
-            Photo by {name}.
-          </Text>
-          <Button
-            backgroundColor='#03A9F4'
-            title='VIEW NOW'
-            onPress={() => Linking.openURL(url)}
-          />
-        </Card>
-      ))}
-    </ScrollView>
-  </View>
-);
+//const response = async () => await API.get().data;
+
+export default class Home extends React.Component {
+  
+  render() {
+    return (
+      <View style={{ flex: 1 }}>
+      <ScrollView contentContainerStyle={{ paddingVertical: 20 }}>
+        {images.map(({ name, image, url, key }) => (
+          <Card title={`CARD ${key}`} image={image} key={key}>
+            <Text style={{ marginBottom: 10 }}>
+              Photo by {name}.
+            </Text>
+            <Button
+              backgroundColor='#03A9F4'
+              title='VIEW NOW'
+              onPress={() => Linking.openURL(url)}
+            />
+          </Card>
+        ))}
+      </ScrollView>
+    </View>
+    );
+  }
+}

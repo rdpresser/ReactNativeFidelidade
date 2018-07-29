@@ -6,8 +6,8 @@ import { onSignIn } from '../auth';
 export default ({ navigation }) => (
   <View style={styles.container}>
     <Card>
-      <FormLabel>Email</FormLabel>
-      <FormInput placeholder='Endereço de email...' />
+      <FormLabel>Documento</FormLabel>
+      <FormInput placeholder='Informe documento...' />
       <FormLabel>Senha</FormLabel>
       <FormInput secureTextEntry placeholder='Informe a senha...' />
 
