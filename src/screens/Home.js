@@ -1,11 +1,12 @@
 import React from 'react';
 import { ScrollView, Text, Linking, View } from 'react-native';
 import { Card, Button } from 'react-native-elements';
+import Config from 'react-native-config';
 
 const images = [
   {
     key: 1,
-    name: 'Nathan Anderson',
+    name: Config.API_BASE_URL,
     image: require('../images/1.jpg'),
     url: 'https://unsplash.com/photos/C9t94JC4_L8'
   },
