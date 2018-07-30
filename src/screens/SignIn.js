@@ -1,15 +1,13 @@
 import React from 'react';
+import Config from 'react-native-config';
+import qs from 'query-string';
 import { View, StyleSheet } from 'react-native';
 import { Card, Button, FormLabel, FormInput } from 'react-native-elements';
 import { onSignIn } from '../auth';
-import toast from '../utils/toast';
-import API from '../api';
+//import { toast } from '../utils/toast';
+import API from '../Services/ServiceApi';
 
-const result = async () => {
-  const response = await API.get();
-  alert(response);
-  alert(response.data);
-};
+//const result = async () => await API.get();
 
 export default ({ navigation }) => (
   <View style={styles.container}>
@@ -24,11 +22,23 @@ export default ({ navigation }) => (
         backgroundColor='#03A9F4'
         title='Login'
         onPress={async () => {
-          //console.log(result.data);
-          alert(result.data);
-          //alert(toast);
-          //toast.show('Rodrigo', { position: 'center' });
-          await onSignIn();
+          const requestBody = {
+            grant_type: 'password',
+            documento: '78775770000101',
+            plataforma: '51E05B67-8F89-4EFB-9B74-75C486C8BB93'
+          };
+
+          const config = {
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded'
+            }
+          };
+
+          const resultRequest = await API.post(Config.API_TOKEN, qs.stringify(requestBody), config);
+
+          console.log(resultRequest.data);
+          //gravar o token
+          await onSignIn(resultRequest.data);
           navigation.navigate('SignedIn');
         }}
       />
