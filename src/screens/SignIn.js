@@ -39,6 +39,10 @@ export default ({ navigation }) => (
           console.log(resultRequest.data);
           //gravar o token
           await onSignIn(resultRequest.data);
+
+          const resultGet = await API.get(Config.API_CLIENTE);
+          console.log('resultGet', resultGet);
+
           navigation.navigate('SignedIn');
         }}
       />

@@ -13,3 +13,5 @@ export const onSignIn = async (token) => {
 export const onSignOut = async () => await AsyncStorage.removeItem(USER_KEY);
 
 export const isSignedIn = async () => await AsyncStorage.getItem(USER_KEY);
+
+export const hasToken = async () => await AsyncStorage.getItem(USER_LOGGED_IN);
