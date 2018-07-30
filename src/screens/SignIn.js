@@ -4,7 +4,6 @@ import qs from 'query-string';
 import { View, StyleSheet } from 'react-native';
 import { Card, Button, FormLabel, FormInput } from 'react-native-elements';
 import { onSignIn } from '../auth';
-//import { toast } from '../utils/toast';
 import API from '../Services/ServiceApi';
 
 //const result = async () => await API.get();
@@ -35,13 +34,17 @@ export default ({ navigation }) => (
           };
 
           const resultRequest = await API.post(Config.API_TOKEN, qs.stringify(requestBody), config);
+          if (resultRequest.status !== 200) {
+            alert(resultRequest.statusText);
+            return;
+          }
 
           console.log(resultRequest.data);
           //gravar o token
           await onSignIn(resultRequest.data);
 
-          const resultGet = await API.get(Config.API_CLIENTE);
-          console.log('resultGet', resultGet);
+          // const resultGet = await API.get(Config.API_CLIENTE);
+          // console.log('resultGet', resultGet);
 
           navigation.navigate('SignedIn');
         }}
