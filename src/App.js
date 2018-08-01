@@ -8,9 +8,7 @@ export default class App extends React.Component {
 
     this.state = {
       signedIn: false,
-      checkedSignIn: false,
-      username: '62564463215',
-      password: '6256'
+      checkedSignIn: false
     };
   }
 

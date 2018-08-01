@@ -8,12 +8,20 @@ import { API } from '../Services/ServiceApi';
 
 //const result = async () => await API.get();
 
-this.state = {
-  username: '62564463215',
-  password: '6256'
-};
+export default class SignIn extends React.Component {
 
-export default ({ navigation }) => (
+  constructor(props) {
+    super(props);
+
+    //valores default para efeitos de teste
+    this.state = {
+      username: '62564463215',
+      password: '6256'
+    };
+  }
+
+  render() {
+    return (
 
   <View style={styles.container}>    
         <Card>
@@ -37,6 +45,14 @@ export default ({ navigation }) => (
             backgroundColor='#03A9F4'
             title='Login'
             onPress={async () => {
+              const { username, password } = this.state;
+
+              //validação simples, a API suporta apenas login entre sistemas, e não usuário final
+              if (username.substr(0, 4) !== password) { 
+                Alert.alert('Informações de Cliente estão inválidas');
+                return;
+              }
+
               const requestBody = {
                 grant_type: 'password',
                 documento: '78775770000101', 
@@ -55,27 +71,21 @@ export default ({ navigation }) => (
                 Alert.alert(resultRequest.statusText);
                 return;
               }
-
-              const { username, password } = this.state;
-
-              if (username.substr(0, 4) !== password) {
-                Alert.alert('Informações de Cliente estão inválidas');
-                return;
-              }
-
               //console.log(resultRequest.data);
               //gravar o token
-              await onSignIn(resultRequest.data, this.state.username, this.state.password);
+              await onSignIn(resultRequest.data, this.state);
 
               // const resultGet = await API.get(Config.API_CLIENTE);
               // console.log('resultGet', resultGet);
 
-              navigation.navigate('SignedIn');
+              this.props.navigation.navigate('SignedIn');
             }}
           />
         </Card>
       </View>
-);
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   container: {

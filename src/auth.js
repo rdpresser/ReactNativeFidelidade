@@ -5,11 +5,11 @@ export const USER_KEY = 'USER_KEY';
 export const USER_INFO = 'USER_INFO';
 export const USER_LOGGED_IN = 'USER_LOGGED_IN';
 
-export const onSignIn = async (token, user, pwd) => {
+export const onSignIn = async (token, userPwd) => {
    const stringF = qs.stringify(token); //transforma obj json para string
    await AsyncStorage.setItem(USER_LOGGED_IN, stringF);
 
-   await AsyncStorage.setItem(USER_INFO, qs.stringify({ username: user, password: pwd }));
+   await AsyncStorage.setItem(USER_INFO, qs.stringify(userPwd));
    await AsyncStorage.setItem(USER_KEY, 'true');
 };
 
