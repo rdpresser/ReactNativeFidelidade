@@ -6,7 +6,7 @@ import Config from 'react-native-config';
 const images = [
   {
     key: 1,
-    name: Config.API_BASE_URL_TEST,
+    name: Config.API_BASE_GATEWAY,
     image: require('../images/1.jpg'),
     url: 'https://unsplash.com/photos/C9t94JC4_L8'
   },

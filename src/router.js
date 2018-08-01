@@ -3,7 +3,6 @@ import { Platform, StatusBar } from 'react-native';
 import { createStackNavigator, createTabNavigator, createSwitchNavigator } from 'react-navigation';
 import { FontAwesome } from 'react-native-vector-icons';
 
-import SignUp from './screens/SignUp';
 import SignIn from './screens/SignIn';
 import Home from './screens/Home';
 import Profile from './screens/Profile';
@@ -13,13 +12,6 @@ const headerStyle = {
 };
 
 export const SignedOut = createStackNavigator({
-  SignUp: {
-    screen: SignUp,
-    navigationOptions: {
-      title: 'Registrar',
-      headerStyle
-    }
-  },
   SignIn: {
     screen: SignIn,
     navigationOptions: {
