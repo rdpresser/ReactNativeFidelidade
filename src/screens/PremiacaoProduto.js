@@ -2,7 +2,7 @@ import React from 'react';
 import { ScrollView, Text, View } from 'react-native';
 import { Card } from 'react-native-elements';
 
-export default class Home extends React.Component {
+export default class PremiacaoProduto extends React.Component {
 
   constructor(props) {
     super(props);
