@@ -1,26 +1,52 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Card, Button, Text } from 'react-native-elements';
-import { onSignOut } from '../auth';
+import { onSignOut, getUserLoginName } from '../auth';
 
-export default ({ navigation }) => (
-  <View style={{ paddingVertical: 20 }}>
-    <Card title='Rodrigo Presser'>
-      <View style={styles.mainCard}>
-        <Text style={{ color: 'white', fontSize: 28 }}>RP</Text>
+export default class Profile extends React.Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      userLoginName: '',
+      userInitials: ''
+    };
+  }
+
+  async componentDidMount() {
+    const userLoginName = await getUserLoginName();
+    console.log('userLoginName:', userLoginName);
+
+    const userInitials = userLoginName.split(' ');
+    const initialsName = `${userInitials[0][0]}${userInitials[1][0]}`;
+    // console.log('userInitials', userInitials);
+    // console.log('userInitials2:', initialsName);
+
+    this.setState({ userLoginName: userLoginName, userInitials: initialsName });
+  }
+
+  render() {
+    return (
+      <View style={{ paddingVertical: 20 }}>
+        <Card title={this.state.userLoginName}>
+          <View style={styles.mainCard}>
+            <Text style={{ color: 'white', fontSize: 28 }}>{this.state.userInitials}</Text>
+          </View>
+          <Button
+            backgroundColor='#03A9F4'
+            title='Deslogar'
+            onPress={async () => {
+              await onSignOut();
+              this.props.navigation.navigate('SignedOut');
+            }
+          }
+          />
+        </Card>
       </View>
-      <Button
-        backgroundColor='#03A9F4'
-        title='Deslogar'
-        onPress={async () => {
-          await onSignOut();
-          navigation.navigate('SignedOut');
-        }
-      }
-      />
-    </Card>
-  </View>
-);
+      );
+    }
+  }
 
 const styles = StyleSheet.create({
   mainCard: {

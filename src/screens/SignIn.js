@@ -23,7 +23,7 @@ export default class SignIn extends React.Component {
   render() {
     return (
 
-  <View style={styles.container}>    
+      <View style={styles.container}>    
         <Card>
           <FormLabel>Documento</FormLabel>
           <FormInput 

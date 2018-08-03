@@ -15,7 +15,6 @@ export default class PremiacaoProduto extends React.Component {
     return (
       <View style={{ flex: 1 }}>
       <ScrollView contentContainerStyle={{ paddingVertical: 20 }}>
-        
           <Card title='Pontuação atual'>
             <Text style={{ marginBottom: 10 }}>
               Valor: {this.state.saldo}
