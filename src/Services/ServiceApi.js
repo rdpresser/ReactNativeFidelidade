@@ -13,6 +13,7 @@ API.interceptors.request.use(async (config) => {
   const originalRequest = config;
   if (config.url !== '/token') {
     const token = qs.parse(await hasToken()).access_token;
+    originalRequest.headers.common['Accept'] = 'application/json';
     originalRequest.headers.common['Content-Type'] = 'application/json';
     originalRequest.headers.common['Authorization'] = `Bearer ${token}`;
     return Promise.resolve(originalRequest);

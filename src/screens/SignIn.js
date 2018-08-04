@@ -3,40 +3,47 @@ import Config from 'react-native-config';
 import qs from 'query-string';
 import { View, StyleSheet, Alert } from 'react-native';
 import { Card, Button, FormLabel, FormInput } from 'react-native-elements';
-import { onSignIn } from '../auth';
+import { onSignIn, getUserInfo } from '../auth';
 import { API } from '../Services/ServiceApi';
 
-//const result = async () => await API.get();
-
 export default class SignIn extends React.Component {
-
+  
   constructor(props) {
     super(props);
 
-    //valores default para efeitos de teste
+    //valores default para facilitar os testes de login
     this.state = {
       username: '62564463215',
       password: '6256'
     };
   }
 
+  async componentDidMount() {
+    const { username, password } = await getUserInfo();
+    
+    if (username && password) {
+      this.setState({
+        username: username,
+        password: password
+      });
+    }
+  } 
+
   render() {
     return (
-
-      <View style={styles.container}>    
+      <View style={styles.container}>
         <Card>
           <FormLabel>Documento</FormLabel>
           <FormInput 
-            placeholder='Informe documento...' 
-            defaultValue='62564463215' 
+            placeholder='Informe o documento...' 
+            defaultValue={this.state.username} 
             onChangeText={(username) => this.setState({ username })}
           />
-
           <FormLabel>Senha</FormLabel>
           <FormInput 
             secureTextEntry 
             placeholder='Informe a senha...'
-            defaultValue='6256'
+            defaultValue={this.state.password}
             onChangeText={(password) => this.setState({ password })}
           />
 
@@ -71,13 +78,9 @@ export default class SignIn extends React.Component {
                 Alert.alert(resultRequest.statusText);
                 return;
               }
-              //console.log(resultRequest.data);
+              
               //gravar o token
               await onSignIn(resultRequest.data, this.state);
-
-              // const resultGet = await API.get(Config.API_CLIENTE);
-              // console.log('resultGet', resultGet);
-
               this.props.navigation.navigate('SignedIn');
             }}
           />
@@ -102,5 +105,5 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: 'black',
     marginBottom: 10,
-  },
+  }
 });
