@@ -18,12 +18,14 @@ export default class Profile extends React.Component {
     const userLoginName = await getUserLoginName();
     console.log('userLoginName:', userLoginName);
 
-    const userInitials = userLoginName.split(' ');
-    const initialsName = `${userInitials[0][0]}${userInitials[1][0]}`;
-    // console.log('userInitials', userInitials);
-    // console.log('userInitials2:', initialsName);
+    if (userLoginName) {
+      const userInitials = userLoginName.split(' ');
+      const initialsName = `${userInitials[0][0]}${userInitials[1][0]}`;
+      // console.log('userInitials', userInitials);
+      // console.log('userInitials2:', initialsName);
 
-    this.setState({ userLoginName: userLoginName, userInitials: initialsName });
+      this.setState({ userLoginName: userLoginName, userInitials: initialsName });
+    }
   }
 
   render() {

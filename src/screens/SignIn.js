@@ -3,7 +3,7 @@ import Config from 'react-native-config';
 import qs from 'query-string';
 import { View, StyleSheet, Alert } from 'react-native';
 import { Card, Button, FormLabel, FormInput } from 'react-native-elements';
-import { onSignIn } from '../auth';
+import { onSignIn, getUserInfo } from '../auth';
 import { API } from '../Services/ServiceApi';
 
 //const result = async () => await API.get();
@@ -20,6 +20,19 @@ export default class SignIn extends React.Component {
     };
   }
 
+  async componentDidMount() {
+    const { username, password } = await getUserInfo();
+    console.log('username', username);
+    console.log('password', password);
+
+    if (username && password) {
+      this.setState({
+        username: username,
+        password: password
+      });
+    }
+  }
+
   render() {
     return (
 
@@ -28,7 +41,7 @@ export default class SignIn extends React.Component {
           <FormLabel>Documento</FormLabel>
           <FormInput 
             placeholder='Informe documento...' 
-            defaultValue='62564463215' 
+            defaultValue={this.state.username} 
             onChangeText={(username) => this.setState({ username })}
           />
 
@@ -36,7 +49,7 @@ export default class SignIn extends React.Component {
           <FormInput 
             secureTextEntry 
             placeholder='Informe a senha...'
-            defaultValue='6256'
+            defaultValue={this.state.password}
             onChangeText={(password) => this.setState({ password })}
           />
 
@@ -71,8 +84,9 @@ export default class SignIn extends React.Component {
                 Alert.alert(resultRequest.statusText);
                 return;
               }
-              //console.log(resultRequest.data);
+              console.log('resultRequest.data', resultRequest.data);
               //gravar o token
+              console.log('this.state', this.state);
               await onSignIn(resultRequest.data, this.state);
 
               // const resultGet = await API.get(Config.API_CLIENTE);
