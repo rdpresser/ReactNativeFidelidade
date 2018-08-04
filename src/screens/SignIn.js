@@ -20,9 +20,7 @@ export default class SignIn extends React.Component {
 
   async componentDidMount() {
     const { username, password } = await getUserInfo();
-    console.log('username', username);
-    console.log('password', password);
-
+    
     if (username && password) {
       this.setState({
         username: username,
@@ -80,14 +78,9 @@ export default class SignIn extends React.Component {
                 Alert.alert(resultRequest.statusText);
                 return;
               }
-              console.log('resultRequest.data', resultRequest.data);
+              
               //gravar o token
-              console.log('this.state', this.state);
               await onSignIn(resultRequest.data, this.state);
-
-              // const resultGet = await API.get(Config.API_CLIENTE);
-              // console.log('resultGet', resultGet);
-
               this.props.navigation.navigate('SignedIn');
             }}
           />

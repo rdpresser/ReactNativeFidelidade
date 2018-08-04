@@ -5,6 +5,7 @@ export const USER_KEY = 'USER_KEY';
 export const USER_INFO = 'USER_INFO';
 export const USER_LOGGED_IN = 'USER_LOGGED_IN';
 export const USER_LOGGED_NAME = 'USER_LOGGED_NAME';
+export const USER_LOGGED_IMAGE = 'USER_LOGGED_IMAGE';
 
 export const onSignIn = async (token, userPwd) => {
    const stringF = qs.stringify(token); //transforma obj json para string
@@ -33,3 +34,9 @@ export const setUserLoginName = async (user) => {
 };
 
 export const getUserLoginName = async () => await AsyncStorage.getItem(USER_LOGGED_NAME);
+
+export const setUserImage = async (userImage) => {
+   await AsyncStorage.setItem(USER_LOGGED_IMAGE, userImage);
+};
+
+export const getUserImage = async () => await AsyncStorage.getItem(USER_LOGGED_IMAGE);
