@@ -16,8 +16,17 @@ Principais bibliotecas utilizadas:
 * react-native-vector-icons: "^4.6.0" => Lib que possui vários elementos de telas como ícones e fontes;
 * react-navigation: "^2.9.3" => Componente de navegação entre as cenas (telas) do app;
 
-
 Versões da Lib React Native utilizadas
 * react: "^16.3.1"
 * react-native: "^0.55.4"
 * Obs.: Utilizando a última versão do React apresentou problemas na compilação, por esse motivo optei por esta versão (downgrade)
+
+Principais benefícios da Linguagem:
+* Desenvolvimento único das regras de negócio;
+* Bastante reaproveitamente de código fonte, e de interface;
+* Bastante exemplos de recursos disponíveis na comunidade do React;
+* Debugg pode ser feito direto na aba do Chrome com o DevTools;
+
+Principais dificuldades:
+* Pelo fato de automaizar os processos de compilação do Gradle via linha de comando, muitos erros são apenas corrigidos com o auxílio do Android Studio;
+* Nem sempre atualizar o projeto com as últimas versões dos pacotes (utilizando ncu ou audit fix) é uma boa idéia, pois a última versão do React Native (0.56) tem apresentado problemas que muitas pessoas também estão tentando corrigir (problemas de compilação mesmo em projetos simples, do tipo "Hello World");
