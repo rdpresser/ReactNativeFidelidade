@@ -28,5 +28,5 @@ Principais benefícios da Linguagem:
 * Debugg pode ser feito direto na aba do Chrome com o DevTools;
 
 Principais dificuldades:
-* Pelo fato de automaizar os processos de compilação do Gradle via linha de comando, muitos erros são apenas corrigidos com o auxílio do Android Studio;
+* Pelo fato de automatizar os processos de compilação do Gradle via linha de comando, muitos erros são apenas corrigidos com o auxílio do Android Studio;
 * Nem sempre atualizar o projeto com as últimas versões dos pacotes (utilizando ncu ou audit fix) é uma boa idéia, pois a última versão do React Native (0.56) tem apresentado problemas que muitas pessoas também estão tentando corrigir (problemas de compilação mesmo em projetos simples, do tipo "Hello World");
