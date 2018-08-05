@@ -1,15 +1,18 @@
 import React from 'react';
 import Config from 'react-native-config';
-import { ScrollView, Text, View, Alert } from 'react-native';
-import { Card } from 'react-native-elements';
+import { ScrollView, View, Alert } from 'react-native';
+import { Card, List, ListItem } from 'react-native-elements';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import { API } from '../Services/ServiceApi';
+
+let list = [];
 
 export default class PremiacaoProduto extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      saldo: 0
+      list: []
     };
   }
 
@@ -25,20 +28,29 @@ export default class PremiacaoProduto extends React.Component {
     }
     
     ///////////
-    console.log(resultRequest.data);    
-
-    //this.setState({ saldo });
+    console.log(resultRequest.data);
+    list = resultRequest.data.value;
+    this.setState({ list });
     //console.log(this.state.saldo);
   }
 
-  render() {
+  render() {        
     return (
       <View style={{ flex: 1 }}>
       <ScrollView contentContainerStyle={{ paddingVertical: 20 }}>
-          <Card title='Pontuação atual'>
-            <Text style={{ marginBottom: 10 }}>
-              Valor: {this.state.saldo}
-            </Text>
+          <Card title='Prêmios disponíveis'>
+          <List containerStyle={{ marginBottom: 20 }}>
+          {
+            list.map((l, i) => (
+              <ListItem
+                roundAvatar
+                leftIcon={(<Icon name="rocket" size={30} color="#900" />)}
+                key={i}
+                title={l.nome}
+              />
+            ))
+          }
+        </List>
           </Card>
       </ScrollView>
     </View>
