@@ -1,6 +1,6 @@
 # ReactNativeFidelidade
 
-Projeto de final de Semestre, utilizando a tecnologia de React Native.
+Projeto final de Semestre, utilizando a tecnologia de React Native.
 
 Projeto simples para comprovar a utilização da tecnologia aprendida em aula.
 Neste projeto foi consumido uma api desenvolvida em C# com o padrão de consumo OData v4.
