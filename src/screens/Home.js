@@ -2,7 +2,7 @@ import React from 'react';
 import Config from 'react-native-config';
 import { ScrollView, Text, View, Alert } from 'react-native';
 import { Card, Rating } from 'react-native-elements';
-import { getUserLogin, setUserLoginName } from '../auth';
+import { getUserLogin, setUserLoginName, setUserSaldo } from '../auth';
 import { API } from '../Services/ServiceApi';
 
 export default class Home extends React.Component {
@@ -24,8 +24,9 @@ export default class Home extends React.Component {
     
     const { saldo, nome } = resultRequest.data[0];
     setUserLoginName(nome);
+    setUserSaldo(saldo);
 
-    this.setState({ saldo: Number(saldo.toString()) });
+    this.setState({ saldo });
   }
 
   render() {
